@@ -58,7 +58,7 @@ public class MemberDao {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		return loginUser;
+		return result;
 	}
 
 	public int updateMember(Connection conn, Member m) {
