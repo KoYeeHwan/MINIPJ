@@ -2,12 +2,12 @@ package com.kh.model.vo;
 
 public class Member {
 	
-	private int userNo;
-	private String userId;
-	private String userPwd;
-	private String SchoolName;
-	private int age;
-	private String email;
+	private int userNo;	 		// 회원번호
+	private String userId;		// 회원 아이디
+	private String userPwd;		// 회원 비밀번호
+	private String SchoolName;	// 학교이름
+	private int age;			// 나이
+	private String email;		// 이메일
 	
 	public Member() {
 		super();

@@ -3,26 +3,36 @@ package com.kh.model.vo;
 import java.sql.Date;
 
 public class Board {
-	
-	private int postNo;
-	private String category;
-	private Date postDate;
-	
+
+	private int postNo; // 게시글 번호
+	private String title; // 게시글 제목
+	private int userNo; // 회원번호
+	private String post; // 게시글
+	private Date postDate; // 게시글 작성일
+
 	public Board() {
 		super();
 	}
-	
-	public Board(int postNo, String category, Date postDate) {
+
+	public Board(int postNo, String title, int userNo, String post, Date postDate) {
 		super();
 		this.postNo = postNo;
-		this.category = category;
+		this.title = title;
+		this.post = post;
 		this.postDate = postDate;
 	}
-	
-	public Board(int postNo, String category) {
+
+	public Board(int postNo, String title, String post) {
 		super();
 		this.postNo = postNo;
-		this.category = category;
+		this.title = title;
+		this.post = post;
+	}
+
+	public Board(String title, String post) {
+		super();
+		this.title = title;
+		this.post = post;
 	}
 
 	public int getPostNo() {
@@ -33,12 +43,28 @@ public class Board {
 		this.postNo = postNo;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public int getUserNo() {
+		return userNo;
+	}
+	
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
+	public String getPost() {
+		return post;
+	}
+
+	public void setPost(String post) {
+		this.post = post;
 	}
 
 	public Date getPostDate() {
@@ -51,8 +77,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return postNo + "," + category + "," + postDate;
+		return title + '\t' + post + '\t' + postDate;
 	}
-	
-	
+
 }

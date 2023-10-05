@@ -1,8 +1,8 @@
 package com.kh.controller;
 
-import com.kh.model.dao.MemberDao;
 import com.kh.model.service.MemberService;
 import com.kh.model.vo.Member;
+import com.kh.view.BoardMenu;
 import com.kh.view.MemberMenu;
 
 public class MemberController {
@@ -20,16 +20,17 @@ public class MemberController {
 			new MemberMenu().displayFail("회원 생성에 실패 하였습니다.");
 		}
 	}
-	
+
 	public void loginMember(String userId, String userPwd) {
-		int result = new MemberService().loginMember(userId, userPwd);
-		
-		if(result > 0) {
-			new MemberMenu().displaySuccess("로그인에 성공하였습니다.");
+		Member m = new MemberService().loginMember(userId, userPwd);
+
+		if (m == null) {
+			System.out.println("로그인에 실패하였습니다.");
 		} else {
-			new MemberMenu().displayFail("로그인에 실패하였습니다.");
+			System.out.println("로그인에 성공하였습니다.");
+			new BoardMenu().BoardMenu(m);
 		}
-		
+
 	}
 
 	public void updateMember(String userId, String userPwd, int age, String email) {
@@ -38,21 +39,21 @@ public class MemberController {
 		m.setUserPwd(userPwd);
 		m.setAge(age);
 		m.setEmail(email);
-		
+
 		int result = new MemberService().updateMember(m);
-		
-		if(result > 0) {
+
+		if (result > 0) {
 			new MemberMenu().displaySuccess("성공적으로 회원 정보가 변경 되었습니다.");
 		} else {
-			new MemberMenu().displayFail("회원 정보 변경에 실패 하였습니다");
+			new MemberMenu().displayFail("회원 정보 변경에 실패 하였습니다.");
 		}
-	} 
-	
-	public void deleteMember(String userId) {
-		int result = new MemberService().deleteMember(userId);
-		
-		if(result > 0) {
-			new MemberMenu().displaySuccess("성공적으로 회원 탈퇴처리 하였습니다");
+	}
+
+	public void deleteMember(String userId, String userPwd) {
+		int result = new MemberService().deleteMember(userId, userPwd);
+
+		if (result > 0) {
+			new MemberMenu().displaySuccess("성공적으로 회원 탈퇴처리 하였습니다.");
 		} else {
 			new MemberMenu().displayFail("회원 탈퇴에 실패 하였습니다.");
 		}
